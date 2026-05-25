@@ -7,10 +7,22 @@ Page({
     floorPlanPath: "",
     promptValue: "",
     promptTemplates: [
-      "90平三室两厅，原木风，预算20万，想要多收纳、好打理、适合三口之家。",
-      "小户型，现代简约，希望显大，客厅要有办公区，预算尽量控制。",
-      "奶油风，想要温馨柔和的家，主卧舒适，厨房和卫生间要好清洁。",
-      "中古风，喜欢有质感的木色和复古灯具，需要完整材料清单和预算建议。"
+      {
+        label: "三口之家",
+        value: "90平三室两厅，原木风，预算20万，想要多收纳、好打理、适合三口之家。"
+      },
+      {
+        label: "小户型显大",
+        value: "小户型，现代简约，希望空间显大，客厅要有办公区，预算尽量控制。"
+      },
+      {
+        label: "温柔奶油风",
+        value: "奶油风，想要温馨柔和的家，主卧舒适，厨房和卫生间要好清洁。"
+      },
+      {
+        label: "质感中古风",
+        value: "中古风，喜欢有质感的木色和复古灯具，需要完整材料清单和预算建议。"
+      }
     ]
   },
 
@@ -36,8 +48,9 @@ Page({
 
   useTemplate(event) {
     const index = Number(event.currentTarget.dataset.index)
+    const template = this.data.promptTemplates[index]
     this.setData({
-      promptValue: this.data.promptTemplates[index] || ""
+      promptValue: template ? template.value : ""
     })
   },
 

@@ -26,7 +26,6 @@
   <view wx:else class="empty-card">
     <view class="empty-title">还没有报告</view>
     <view class="empty-text">先上传户型图，输入你的装修想法，生成第一份方案。</view>
-    <button class="primary-button" bindtap="goCreate">整一套</button>
+    <button class="primary-button" bindtap="goCreate">创建方案</button>
   </view>
 </view>
-

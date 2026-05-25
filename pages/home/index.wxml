@@ -4,10 +4,10 @@
     <view class="hero-shade"></view>
     <view class="hero-content">
       <view class="eyebrow">户型图 -> 装修分析报告</view>
-      <view class="hero-title">一张图，整一套装修方案</view>
+      <view class="hero-title">一张户型图，生成装修方案</view>
       <view class="hero-subtitle">上传户型图和你的想法，生成房间渲染图、材料清单、预算估算和设计思路。</view>
       <view class="hero-actions">
-        <button class="hero-primary" bindtap="goCreate">整一套</button>
+        <button class="hero-primary" bindtap="goCreate">开始设计</button>
         <button class="hero-secondary" bindtap="goHistory">历史报告</button>
       </view>
     </view>

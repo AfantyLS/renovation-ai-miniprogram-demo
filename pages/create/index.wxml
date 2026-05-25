@@ -1,7 +1,7 @@
 <view class="page">
   <view class="create-top">
-    <view class="title">整一套</view>
-    <view class="subtitle">上传户型图，再把你的想法丢进 Prompt。其余交给方案生成器。</view>
+    <view class="title">创建装修方案</view>
+    <view class="subtitle">上传户型图，描述你的偏好，快速生成分析报告。</view>
   </view>
 
   <view class="section upload-card">
@@ -16,7 +16,7 @@
   </view>
 
   <view class="section prompt-card">
-    <view class="prompt-label">Prompt</view>
+    <view class="prompt-label">装修需求</view>
     <textarea
       class="prompt-input"
       placeholder="例如：90平三室两厅，原木风，预算20万，希望多收纳、儿童友好、厨房好清洁。"
@@ -25,16 +25,16 @@
       bindinput="onPromptInput"
     ></textarea>
 
-    <view class="template-title">快速套用</view>
-    <view class="template-list">
+    <view class="template-title">快速填入</view>
+    <scroll-view class="template-list" scroll-x="true" enhanced="true" show-scrollbar="false">
       <view
         wx:for="{{promptTemplates}}"
-        wx:key="*this"
+        wx:key="label"
         class="template-chip"
         data-index="{{index}}"
         bindtap="useTemplate"
-      >{{item}}</view>
-    </view>
+      >{{item.label}}</view>
+    </scroll-view>
   </view>
 
   <button class="primary-button generate-button" bindtap="generateReport">生成方案</button>

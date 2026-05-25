@@ -88,12 +88,12 @@
 
   <view class="report-actions">
     <button class="ghost-button action-button" bindtap="goHistory">历史报告</button>
-    <button class="primary-button action-button" bindtap="goCreate">再整一套</button>
+    <button class="primary-button action-button" bindtap="goCreate">再生成一份</button>
   </view>
 </view>
 
 <view class="page empty" wx:else>
   <view class="title">还没有报告</view>
   <view class="subtitle">先创建一个装修方案，再查看报告。</view>
-  <button class="primary-button" bindtap="goCreate">整一套</button>
+  <button class="primary-button" bindtap="goCreate">创建方案</button>
 </view>
