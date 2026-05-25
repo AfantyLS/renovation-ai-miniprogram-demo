@@ -75,9 +75,13 @@
 
 .hero-primary,
 .hero-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0;
   height: 92rpx;
-  line-height: 92rpx;
+  line-height: 1;
+  padding: 0;
   border-radius: 999rpx;
   font-size: 30rpx;
   font-weight: 800;
