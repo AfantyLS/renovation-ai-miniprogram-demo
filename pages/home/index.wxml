@@ -1,0 +1,24 @@
+<view class="page">
+  <view class="hero">
+    <view class="eyebrow">Mini Demo</view>
+    <view class="title">AI 装修方案生成器</view>
+    <view class="subtitle">上传户型图，填写装修想法，先生成一份可阅读的方案报告。这个版本用于验证小程序主流程。</view>
+    <button class="primary-button" bindtap="goCreate">创建装修方案</button>
+  </view>
+
+  <view class="section card">
+    <view class="section-title">Demo 已包含</view>
+    <view class="feature-list">
+      <view class="feature">户型图选择</view>
+      <view class="feature">装修需求表单</view>
+      <view class="feature">本地模拟生成报告</view>
+      <view class="feature">预算、材料、家具清单</view>
+    </view>
+  </view>
+
+  <view class="section card">
+    <view class="section-title">下一步</view>
+    <view class="subtitle">接入云开发后，可以把报告保存到云端，再由云函数调用大模型生成真实装修方案。</view>
+  </view>
+</view>
+

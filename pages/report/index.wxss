@@ -1,0 +1,91 @@
+.report-header {
+  padding: 24rpx 0 8rpx;
+}
+
+.paragraph {
+  margin-top: 18rpx;
+  color: #435056;
+  font-size: 28rpx;
+  line-height: 1.7;
+}
+
+.list-item {
+  padding: 18rpx 0;
+  border-bottom: 1rpx solid rgba(38, 50, 56, 0.08);
+  color: #435056;
+  font-size: 28rpx;
+  line-height: 1.55;
+}
+
+.list-item:last-child {
+  border-bottom: 0;
+}
+
+.room-block {
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid rgba(38, 50, 56, 0.08);
+}
+
+.room-block:last-child {
+  border-bottom: 0;
+}
+
+.room-name {
+  color: #263238;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.note {
+  margin-top: 14rpx;
+  color: #6f7a80;
+  font-size: 26rpx;
+  line-height: 1.6;
+}
+
+.compact-item {
+  padding: 18rpx 0;
+  border-bottom: 1rpx solid rgba(38, 50, 56, 0.08);
+}
+
+.compact-item:last-child {
+  border-bottom: 0;
+}
+
+.compact-main {
+  color: #263238;
+  font-size: 28rpx;
+  font-weight: 700;
+}
+
+.compact-sub {
+  margin-top: 8rpx;
+  color: #6f7a80;
+  font-size: 25rpx;
+  line-height: 1.5;
+}
+
+.budget-total {
+  margin-top: 18rpx;
+  color: #a05f36;
+  font-size: 42rpx;
+  font-weight: 800;
+}
+
+.budget-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid rgba(38, 50, 56, 0.08);
+  color: #435056;
+  font-size: 27rpx;
+}
+
+.budget-row:last-child {
+  border-bottom: 0;
+}
+
+.empty {
+  padding-top: 160rpx;
+}
+
