@@ -12,13 +12,12 @@
       data-index="{{index}}"
       bindtap="openReport"
     >
-      <view class="history-cover">
-        <image src="{{item.coverImage}}" mode="aspectFill"></image>
-      </view>
+      <image class="history-bg" src="/assets/render-living.jpg" mode="aspectFill"></image>
+      <view class="history-mask"></view>
       <view class="history-body">
         <view class="history-title">{{item.project.style}} · {{item.project.area}}㎡</view>
         <view class="history-sub">{{item.project.budget}} · {{item.createdAt}}</view>
-        <view class="history-prompt">{{item.prompt}}</view>
+        <view class="history-summary">{{item.summary}}</view>
       </view>
     </view>
   </view>

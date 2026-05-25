@@ -1,19 +1,30 @@
 <view class="report-page" wx:if="{{report}}">
   <view class="report-document">
     <view class="cover">
-      <image class="cover-image" src="{{report.coverImage}}" mode="aspectFill"></image>
+      <image class="cover-image" src="/assets/render-living.jpg" mode="aspectFill"></image>
       <view class="cover-shade"></view>
       <view class="cover-copy">
-        <view class="cover-kicker">RENOVATION REPORT</view>
+        <view class="cover-kicker">装修方案报告</view>
         <view class="cover-title">{{report.project.style}}装修方案</view>
         <view class="cover-meta">{{report.project.area}}㎡ · {{report.project.budget}}</view>
       </view>
     </view>
 
-    <view class="html-section intro-section">
-      <view class="html-label">Prompt</view>
-      <view class="prompt-quote">{{report.prompt}}</view>
+    <view class="html-section analysis-section">
+      <view class="section-head">
+        <view>
+          <view class="html-label">Floor Plan</view>
+          <view class="html-title">户型分析</view>
+        </view>
+        <view class="section-index">01</view>
+      </view>
       <view class="summary">{{report.summary}}</view>
+      <view class="analysis-grid">
+        <view wx:for="{{report.floorPlanAnalysis}}" wx:key="title" class="analysis-card">
+          <view class="analysis-title">{{item.title}}</view>
+          <view class="analysis-copy">{{item.content}}</view>
+        </view>
+      </view>
     </view>
 
     <view class="html-section">

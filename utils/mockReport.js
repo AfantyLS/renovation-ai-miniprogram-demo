@@ -61,7 +61,7 @@ function buildReport(form) {
   return {
     id: Date.now().toString(),
     createdAt: new Date().toLocaleString(),
-    coverImage: "/assets/hero-renovation.png",
+    coverImage: "/assets/render-living.jpg",
     floorPlanPath: form.floorPlanPath || "",
     prompt,
     project: {
@@ -72,7 +72,21 @@ function buildReport(form) {
       style,
       family: form.family || "未填写"
     },
-    summary: `本方案定位为${budgetLabel}，以${style}为主线，优先解决居住动线、收纳效率和日常清洁维护。结合你的 Prompt，方案会把硬装预算控制在合理范围内，再通过软装、灯光和材质把空间氛围做出来。`,
+    summary: `本方案定位为${budgetLabel}，以${style}为主线，优先解决居住动线、收纳效率和日常清洁维护。方案会把硬装预算控制在合理范围内，再通过软装、灯光和材质把空间氛围做出来。`,
+    floorPlanAnalysis: [
+      {
+        title: "动线",
+        content: "公共区域建议保持客餐厅连贯，减少高柜和隔断对通行的影响，让入户、客厅、厨房之间更顺畅。"
+      },
+      {
+        title: "采光",
+        content: "优先保留窗边的自然光面，墙面和柜体选择低饱和浅色系，提升整体明亮度。"
+      },
+      {
+        title: "收纳",
+        content: "玄关、客厅、卧室分别设置独立收纳点，避免所有杂物集中到单一区域。"
+      }
+    ],
     highlights: [
       "公共区域保持开放通透，减少不必要隔断",
       "每个房间预留独立收纳系统，降低后期杂乱风险",
