@@ -2,15 +2,15 @@
   "pages": [
     "pages/home/index",
     "pages/create/index",
+    "pages/history/index",
     "pages/report/index"
   ],
   "window": {
     "navigationBarTitleText": "AI 装修方案",
-    "navigationBarBackgroundColor": "#f7f3ee",
+    "navigationBarBackgroundColor": "#f6f2ea",
     "navigationBarTextStyle": "black",
-    "backgroundColor": "#f7f3ee"
+    "backgroundColor": "#f6f2ea"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }
-

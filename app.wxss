@@ -1,13 +1,13 @@
 page {
   min-height: 100%;
-  background: #f6f7f4;
-  color: #202624;
+  background: #f6f2ea;
+  color: #241f1a;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .page {
   min-height: 100vh;
-  padding: 36rpx 32rpx 48rpx;
+  padding: 34rpx 28rpx 52rpx;
   box-sizing: border-box;
 }
 
@@ -17,14 +17,14 @@ page {
 
 .card {
   background: #ffffff;
-  border: 1rpx solid rgba(32, 38, 36, 0.07);
+  border: 1rpx solid rgba(36, 31, 26, 0.07);
   border-radius: 28rpx;
   padding: 30rpx;
-  box-shadow: 0 18rpx 46rpx rgba(32, 38, 36, 0.07);
+  box-shadow: 0 18rpx 46rpx rgba(36, 31, 26, 0.07);
 }
 
 .title {
-  font-size: 48rpx;
+  font-size: 50rpx;
   line-height: 1.2;
   font-weight: 800;
   letter-spacing: 0;
@@ -34,7 +34,7 @@ page {
   margin-top: 16rpx;
   font-size: 28rpx;
   line-height: 1.6;
-  color: #66706b;
+  color: #756d62;
 }
 
 .section-title {
@@ -44,19 +44,19 @@ page {
 }
 
 .muted {
-  color: #74807a;
+  color: #81786d;
 }
 
 .primary-button {
   margin-top: 32rpx;
   height: 96rpx;
   line-height: 96rpx;
-  border-radius: 22rpx;
-  background: #214d43;
+  border-radius: 999rpx;
+  background: #1f493f;
   color: #ffffff;
   font-size: 30rpx;
   font-weight: 700;
-  box-shadow: 0 18rpx 34rpx rgba(33, 77, 67, 0.2);
+  box-shadow: 0 18rpx 34rpx rgba(31, 73, 63, 0.22);
 }
 
 button::after {
@@ -67,11 +67,12 @@ button::after {
   margin-top: 20rpx;
   height: 88rpx;
   line-height: 88rpx;
-  border-radius: 20rpx;
-  background: #edf3ef;
-  color: #214d43;
+  border-radius: 999rpx;
+  background: #f0e9df;
+  color: #241f1a;
   border: 0;
   font-size: 28rpx;
+  font-weight: 700;
 }
 
 .tag {
@@ -79,7 +80,7 @@ button::after {
   margin: 12rpx 12rpx 0 0;
   padding: 9rpx 18rpx;
   border-radius: 999rpx;
-  background: #eaf1ee;
-  color: #214d43;
+  background: #efe7db;
+  color: #79533a;
   font-size: 24rpx;
 }

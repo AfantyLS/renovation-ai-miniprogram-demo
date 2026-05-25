@@ -1,64 +1,99 @@
-<view class="page" wx:if="{{report}}">
-  <view class="report-header">
-    <view class="title">{{report.project.style}}装修方案</view>
-    <view class="subtitle">{{report.project.area}}㎡ · {{report.project.layout}}</view>
-    <view class="tag">{{report.project.budget}}</view>
-  </view>
+<view class="report-page" wx:if="{{report}}">
+  <view class="report-document">
+    <view class="cover">
+      <image class="cover-image" src="{{report.coverImage}}" mode="aspectFill"></image>
+      <view class="cover-shade"></view>
+      <view class="cover-copy">
+        <view class="cover-kicker">RENOVATION REPORT</view>
+        <view class="cover-title">{{report.project.style}}装修方案</view>
+        <view class="cover-meta">{{report.project.area}}㎡ · {{report.project.budget}}</view>
+      </view>
+    </view>
 
-  <view class="section card">
-    <view class="section-title">整体总结</view>
-    <view class="paragraph">{{report.summary}}</view>
-  </view>
+    <view class="html-section intro-section">
+      <view class="html-label">Prompt</view>
+      <view class="prompt-quote">{{report.prompt}}</view>
+      <view class="summary">{{report.summary}}</view>
+    </view>
 
-  <view class="section card">
-    <view class="section-title">方案亮点</view>
-    <view wx:for="{{report.highlights}}" wx:key="*this" class="list-item">{{item}}</view>
-  </view>
+    <view class="html-section">
+      <view class="html-title">房间渲染图</view>
+      <view class="render-grid">
+        <view wx:for="{{report.rooms}}" wx:key="name" class="render-card {{item.tone}}">
+          <view class="render-room">{{item.name}}</view>
+          <view class="render-title">{{item.renderTitle}}</view>
+        </view>
+      </view>
+    </view>
 
-  <view class="section card">
-    <view class="section-title">房间方案</view>
-    <view wx:for="{{report.rooms}}" wx:key="name" class="room-block">
-      <view class="room-name">{{item.name}}</view>
-      <view class="paragraph">{{item.plan}}</view>
-      <view class="note">{{item.materials}}</view>
+    <view class="html-section">
+      <view class="html-title">设计思路</view>
+      <view wx:for="{{report.highlights}}" wx:key="*this" class="idea-item">
+        <view class="idea-dot"></view>
+        <view class="idea-text">{{item}}</view>
+      </view>
+    </view>
+
+    <view class="html-section">
+      <view class="html-title">空间方案</view>
+      <view wx:for="{{report.rooms}}" wx:key="name" class="room-article">
+        <view class="room-heading">{{item.name}}</view>
+        <view class="room-copy">{{item.plan}}</view>
+        <view class="room-note">{{item.materials}}</view>
+      </view>
+    </view>
+
+    <view class="html-section">
+      <view class="html-title">装修材料清单</view>
+      <view class="report-table">
+        <view class="table-row table-head">
+          <text>材料</text>
+          <text>空间</text>
+        </view>
+        <view wx:for="{{report.materials}}" wx:key="name" class="table-row">
+          <text>{{item.name}}</text>
+          <text>{{item.room}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="html-section">
+      <view class="html-title">软装家具家电</view>
+      <view class="report-table">
+        <view class="table-row table-head">
+          <text>项目</text>
+          <text>建议空间</text>
+        </view>
+        <view wx:for="{{report.furniture}}" wx:key="name" class="table-row">
+          <text>{{item.name}}</text>
+          <text>{{item.room}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="html-section budget-section">
+      <view class="html-title">预算估算</view>
+      <view class="budget-total">约 {{report.budget.total}} 元</view>
+      <view wx:for="{{report.budget.items}}" wx:key="name" class="budget-line">
+        <view class="budget-name">{{item.name}}</view>
+        <view class="budget-amount">{{item.amount}} 元</view>
+      </view>
+    </view>
+
+    <view class="html-section next-section">
+      <view class="html-title">下一步</view>
+      <view wx:for="{{report.nextSteps}}" wx:key="*this" class="next-item">{{item}}</view>
     </view>
   </view>
 
-  <view class="section card">
-    <view class="section-title">材料建议</view>
-    <view wx:for="{{report.materials}}" wx:key="name" class="compact-item">
-      <view class="compact-main">{{item.name}}</view>
-      <view class="compact-sub">{{item.room}} · {{item.note}}</view>
-    </view>
+  <view class="report-actions">
+    <button class="ghost-button action-button" bindtap="goHistory">历史报告</button>
+    <button class="primary-button action-button" bindtap="goCreate">再整一套</button>
   </view>
-
-  <view class="section card">
-    <view class="section-title">家具家电建议</view>
-    <view wx:for="{{report.furniture}}" wx:key="name" class="compact-item">
-      <view class="compact-main">{{item.name}}</view>
-      <view class="compact-sub">{{item.room}} · {{item.note}}</view>
-    </view>
-  </view>
-
-  <view class="section card">
-    <view class="section-title">预算估算</view>
-    <view class="budget-total">约 {{report.budget.total}} 元</view>
-    <view wx:for="{{report.budget.items}}" wx:key="name" class="budget-row">
-      <text>{{item.name}}</text>
-      <text>{{item.amount}} 元</text>
-    </view>
-  </view>
-
-  <view class="section card">
-    <view class="section-title">下一步任务</view>
-    <view wx:for="{{report.nextSteps}}" wx:key="*this" class="list-item">{{item}}</view>
-  </view>
-
-  <button class="primary-button" bindtap="goCreate">再生成一份</button>
 </view>
 
 <view class="page empty" wx:else>
   <view class="title">还没有报告</view>
   <view class="subtitle">先创建一个装修方案，再查看报告。</view>
-  <button class="primary-button" bindtap="goCreate">去创建</button>
+  <button class="primary-button" bindtap="goCreate">整一套</button>
 </view>

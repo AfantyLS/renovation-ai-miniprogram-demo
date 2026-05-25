@@ -5,11 +5,13 @@ const app = getApp()
 Page({
   data: {
     floorPlanPath: "",
-    budgetOptions: ["8-15万", "15-25万", "25-40万", "40万以上"],
-    styleOptions: ["现代简约", "原木风", "奶油风", "中古风", "轻奢风"],
-    budgetIndex: 1,
-    styleIndex: 0,
-    form: {}
+    promptValue: "",
+    promptTemplates: [
+      "90平三室两厅，原木风，预算20万，想要多收纳、好打理、适合三口之家。",
+      "小户型，现代简约，希望显大，客厅要有办公区，预算尽量控制。",
+      "奶油风，想要温馨柔和的家，主卧舒适，厨房和卫生间要好清洁。",
+      "中古风，喜欢有质感的木色和复古灯具，需要完整材料清单和预算建议。"
+    ]
   },
 
   chooseFloorPlan() {
@@ -26,44 +28,52 @@ Page({
     })
   },
 
-  onBudgetChange(event) {
+  onPromptInput(event) {
     this.setData({
-      budgetIndex: Number(event.detail.value)
+      promptValue: event.detail.value
     })
   },
 
-  onStyleChange(event) {
+  useTemplate(event) {
+    const index = Number(event.currentTarget.dataset.index)
     this.setData({
-      styleIndex: Number(event.detail.value)
+      promptValue: this.data.promptTemplates[index] || ""
     })
   },
 
-  submitForm(event) {
-    const values = event.detail.value
-    const form = {
-      ...values,
-      city: "你的家",
-      layout: "智能规划",
-      family: "居住需求待补充",
-      budget: this.data.budgetOptions[this.data.budgetIndex],
-      style: this.data.styleOptions[this.data.styleIndex],
-      floorPlanPath: this.data.floorPlanPath
-    }
-
-    if (!form.area) {
+  generateReport() {
+    const prompt = this.data.promptValue.trim()
+    if (!prompt) {
       wx.showToast({
-        title: "请填写建筑面积",
+        title: "先写下你的装修想法",
         icon: "none"
       })
       return
     }
 
+    const form = {
+      prompt,
+      city: "你的家",
+      layout: "智能规划",
+      family: "居住需求待补充",
+      floorPlanPath: this.data.floorPlanPath
+    }
+
+    wx.showLoading({
+      title: "生成方案中"
+    })
     const report = buildReport(form)
     app.globalData.currentReport = report
     wx.setStorageSync("latestReport", report)
 
-    wx.navigateTo({
-      url: "/pages/report/index"
-    })
+    const reports = wx.getStorageSync("reports") || []
+    wx.setStorageSync("reports", [report, ...reports].slice(0, 20))
+
+    setTimeout(() => {
+      wx.hideLoading()
+      wx.navigateTo({
+        url: "/pages/report/index"
+      })
+    }, 600)
   }
 })

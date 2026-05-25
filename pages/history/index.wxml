@@ -1,0 +1,32 @@
+<view class="page history-page">
+  <view class="history-head">
+    <view class="title">历史报告</view>
+    <view class="subtitle">这里会保存最近生成的装修方案，方便随时回来对比。</view>
+  </view>
+
+  <view wx:if="{{reports.length}}" class="report-list">
+    <view
+      wx:for="{{reports}}"
+      wx:key="id"
+      class="history-card"
+      data-index="{{index}}"
+      bindtap="openReport"
+    >
+      <view class="history-cover">
+        <image src="{{item.coverImage}}" mode="aspectFill"></image>
+      </view>
+      <view class="history-body">
+        <view class="history-title">{{item.project.style}} · {{item.project.area}}㎡</view>
+        <view class="history-sub">{{item.project.budget}} · {{item.createdAt}}</view>
+        <view class="history-prompt">{{item.prompt}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:else class="empty-card">
+    <view class="empty-title">还没有报告</view>
+    <view class="empty-text">先上传户型图，输入你的装修想法，生成第一份方案。</view>
+    <button class="primary-button" bindtap="goCreate">整一套</button>
+  </view>
+</view>
+

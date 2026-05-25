@@ -1,28 +1,42 @@
-<view class="page">
+<view class="home-page">
   <view class="hero">
-    <view class="hero-card">
-      <view class="eyebrow">AI Interior Planner</view>
-      <view class="title">把户型图变成装修方案</view>
-      <view class="subtitle">上传户型图，选择预算和风格，快速生成一份可阅读的空间规划报告。</view>
-      <button class="primary-button" bindtap="goCreate">开始生成</button>
+    <image class="hero-image" src="/assets/hero-renovation.png" mode="aspectFill"></image>
+    <view class="hero-shade"></view>
+    <view class="hero-content">
+      <view class="eyebrow">户型图 -> 装修分析报告</view>
+      <view class="hero-title">一张图，整一套装修方案</view>
+      <view class="hero-subtitle">上传户型图和你的想法，生成房间渲染图、材料清单、预算估算和设计思路。</view>
+      <view class="hero-actions">
+        <button class="hero-primary" bindtap="goCreate">整一套</button>
+        <button class="hero-secondary" bindtap="goHistory">历史报告</button>
+      </view>
     </view>
   </view>
 
-  <view class="section quick-grid">
-    <view class="quick-card">
-      <view class="quick-number">01</view>
-      <view class="quick-title">上传户型</view>
-      <view class="quick-text">选择图片即可开始</view>
+  <view class="section-title-row">
+    <view>
+      <view class="section-kicker">生成内容</view>
+      <view class="section-heading">不只是一段建议</view>
     </view>
-    <view class="quick-card">
-      <view class="quick-number">02</view>
-      <view class="quick-title">选择偏好</view>
-      <view class="quick-text">预算、风格和需求</view>
+    <view class="section-dot"></view>
+  </view>
+
+  <view class="feature-grid">
+    <view class="feature-card dark">
+      <view class="feature-title">各房间渲染图</view>
+      <view class="feature-text">客厅、卧室、厨房、卫生间按风格生成视觉参考。</view>
     </view>
-    <view class="quick-card wide">
-      <view class="quick-number">03</view>
-      <view class="quick-title">生成报告</view>
-      <view class="quick-text">包含空间建议、材料清单和预算估算</view>
+    <view class="feature-card">
+      <view class="feature-title">材料清单</view>
+      <view class="feature-text">墙面、地面、厨房、卫浴材料建议一次列清。</view>
+    </view>
+    <view class="feature-card">
+      <view class="feature-title">设计思路</view>
+      <view class="feature-text">动线、收纳、灯光、色彩搭配都写进报告。</view>
+    </view>
+    <view class="feature-card warm">
+      <view class="feature-title">预算估算</view>
+      <view class="feature-text">硬装、主材、家具、家电分项估算。</view>
     </view>
   </view>
 </view>

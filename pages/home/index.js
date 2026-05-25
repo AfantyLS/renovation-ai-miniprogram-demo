@@ -3,6 +3,11 @@ Page({
     wx.navigateTo({
       url: "/pages/create/index"
     })
+  },
+
+  goHistory() {
+    wx.navigateTo({
+      url: "/pages/history/index"
+    })
   }
 })
-

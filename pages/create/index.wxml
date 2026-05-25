@@ -1,6 +1,8 @@
 <view class="page">
-  <view class="title">创建方案</view>
-  <view class="subtitle">只填几个关键信息，先生成一版可看的装修建议。</view>
+  <view class="create-top">
+    <view class="title">整一套</view>
+    <view class="subtitle">上传户型图，再把你的想法丢进 Prompt。其余交给方案生成器。</view>
+  </view>
 
   <view class="section upload-card">
     <view wx:if="{{floorPlanPath}}" class="image-preview">
@@ -13,33 +15,27 @@
     <button class="ghost-button" bindtap="chooseFloorPlan">{{floorPlanPath ? "重新选择" : "选择图片"}}</button>
   </view>
 
-  <form bindsubmit="submitForm">
-    <view class="section card">
-      <view class="field">
-        <text class="label">建筑面积</text>
-        <input name="area" type="number" placeholder="例如：98" value="{{form.area}}" />
-      </view>
+  <view class="section prompt-card">
+    <view class="prompt-label">Prompt</view>
+    <textarea
+      class="prompt-input"
+      placeholder="例如：90平三室两厅，原木风，预算20万，希望多收纳、儿童友好、厨房好清洁。"
+      value="{{promptValue}}"
+      maxlength="500"
+      bindinput="onPromptInput"
+    ></textarea>
 
-      <view class="field">
-        <text class="label">预算范围</text>
-        <picker name="budget" range="{{budgetOptions}}" value="{{budgetIndex}}" bindchange="onBudgetChange">
-          <view class="picker-value">{{budgetOptions[budgetIndex]}}</view>
-        </picker>
-      </view>
-
-      <view class="field">
-        <text class="label">装修风格</text>
-        <picker name="style" range="{{styleOptions}}" value="{{styleIndex}}" bindchange="onStyleChange">
-          <view class="picker-value">{{styleOptions[styleIndex]}}</view>
-        </picker>
-      </view>
-
-      <view class="field">
-        <text class="label">一句话需求</text>
-        <textarea name="needs" placeholder="例如：想要更多收纳，整体温馨好打理" value="{{form.needs}}" />
-      </view>
+    <view class="template-title">快速套用</view>
+    <view class="template-list">
+      <view
+        wx:for="{{promptTemplates}}"
+        wx:key="*this"
+        class="template-chip"
+        data-index="{{index}}"
+        bindtap="useTemplate"
+      >{{item}}</view>
     </view>
+  </view>
 
-    <button class="primary-button" form-type="submit">生成方案</button>
-  </form>
+  <button class="primary-button generate-button" bindtap="generateReport">生成方案</button>
 </view>

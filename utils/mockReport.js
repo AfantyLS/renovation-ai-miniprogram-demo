@@ -32,24 +32,47 @@ function generateBudget(area, budget) {
   }
 }
 
+function inferStyle(prompt) {
+  const styles = ["现代简约", "原木风", "奶油风", "中古风", "轻奢风", "侘寂风"]
+  return styles.find((style) => prompt.indexOf(style) >= 0) || "现代简约"
+}
+
+function inferBudget(prompt) {
+  if (/40万|四十万|高配|品质/.test(prompt)) return "40万以上"
+  if (/25万|30万|三十万|40/.test(prompt)) return "25-40万"
+  if (/8万|10万|十五万|省钱|出租/.test(prompt)) return "8-15万"
+  return "15-25万"
+}
+
+function inferArea(prompt) {
+  const matched = prompt.match(/(\d{2,3})\s*(㎡|平|平方)/)
+  return matched ? matched[1] : "100"
+}
+
 function buildReport(form) {
-  const budget = generateBudget(form.area, form.budget)
-  const budgetLabel = getBudgetLabel(form.budget)
-  const style = form.style || "现代简约"
+  const prompt = form.prompt || form.needs || "希望整体温馨好打理，收纳充足。"
+  const inferredBudget = form.budget || inferBudget(prompt)
+  const inferredArea = form.area || inferArea(prompt)
+  const budget = generateBudget(inferredArea, inferredBudget)
+  const budgetLabel = getBudgetLabel(inferredBudget)
+  const style = form.style || inferStyle(prompt)
   const city = form.city || "你的家"
 
   return {
     id: Date.now().toString(),
     createdAt: new Date().toLocaleString(),
+    coverImage: "/assets/hero-renovation.png",
+    floorPlanPath: form.floorPlanPath || "",
+    prompt,
     project: {
       city,
-      area: form.area || "未填写",
-      layout: form.layout || "未填写",
-      budget: form.budget || "未填写",
+      area: inferredArea,
+      layout: form.layout || "智能规划",
+      budget: inferredBudget,
       style,
       family: form.family || "未填写"
     },
-    summary: `本方案定位为${budgetLabel}，以${style}为主线，优先解决居住动线、收纳效率和日常清洁维护。结合${city}家庭居住习惯，建议先明确硬装边界，再通过软装和灯光塑造风格。`,
+    summary: `本方案定位为${budgetLabel}，以${style}为主线，优先解决居住动线、收纳效率和日常清洁维护。结合你的 Prompt，方案会把硬装预算控制在合理范围内，再通过软装、灯光和材质把空间氛围做出来。`,
     highlights: [
       "公共区域保持开放通透，减少不必要隔断",
       "每个房间预留独立收纳系统，降低后期杂乱风险",
@@ -59,21 +82,29 @@ function buildReport(form) {
     rooms: [
       {
         name: "客厅",
+        tone: "living",
+        renderTitle: "温润通透的会客核心",
         plan: "以舒适会客和家庭互动为核心，建议选择低饱和墙面、模块化沙发和隐藏式收纳电视柜。",
         materials: "地面建议使用耐磨木地板或柔光砖，墙面使用环保乳胶漆。"
       },
       {
         name: "主卧",
+        tone: "bedroom",
+        renderTitle: "安静放松的睡眠空间",
         plan: "主卧强调安静和睡眠质量，床头采用暖色局部照明，衣柜做到顶减少卫生死角。",
         materials: "墙面选择低 VOC 乳胶漆，窗帘建议遮光帘加纱帘组合。"
       },
       {
         name: "厨房",
+        tone: "kitchen",
+        renderTitle: "顺手好清洁的烹饪动线",
         plan: "厨房重点优化洗切炒动线，台面预留小家电区，吊柜下方增加灯带。",
         materials: "台面建议石英石，墙面选择易清洁瓷砖。"
       },
       {
         name: "卫生间",
+        tone: "bath",
+        renderTitle: "干湿分离与安全防滑",
         plan: "优先做干湿分离，镜柜和壁龛提升收纳能力，地面注意防滑。",
         materials: "地砖选择防滑砖，五金选择耐腐蚀材质。"
       }
@@ -95,7 +126,7 @@ function buildReport(form) {
       "补充准确户型尺寸和层高",
       "确认是否需要中央空调、新风、地暖",
       "选择 2 到 3 个偏好的参考图",
-      "进入下一版后接入真实 AI 生成完整报告"
+      "接入真实 AI 后生成完整 HTML 报告和房间效果图"
     ]
   }
 }
