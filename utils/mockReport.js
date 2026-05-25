@@ -36,7 +36,7 @@ function buildReport(form) {
   const budget = generateBudget(form.area, form.budget)
   const budgetLabel = getBudgetLabel(form.budget)
   const style = form.style || "现代简约"
-  const city = form.city || "未填写城市"
+  const city = form.city || "你的家"
 
   return {
     id: Date.now().toString(),
@@ -103,4 +103,3 @@ function buildReport(form) {
 module.exports = {
   buildReport
 }
-

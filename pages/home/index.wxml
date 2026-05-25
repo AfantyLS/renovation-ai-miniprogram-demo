@@ -1,24 +1,28 @@
 <view class="page">
   <view class="hero">
-    <view class="eyebrow">Mini Demo</view>
-    <view class="title">AI 装修方案生成器</view>
-    <view class="subtitle">上传户型图，填写装修想法，先生成一份可阅读的方案报告。这个版本用于验证小程序主流程。</view>
-    <button class="primary-button" bindtap="goCreate">创建装修方案</button>
-  </view>
-
-  <view class="section card">
-    <view class="section-title">Demo 已包含</view>
-    <view class="feature-list">
-      <view class="feature">户型图选择</view>
-      <view class="feature">装修需求表单</view>
-      <view class="feature">本地模拟生成报告</view>
-      <view class="feature">预算、材料、家具清单</view>
+    <view class="hero-card">
+      <view class="eyebrow">AI Interior Planner</view>
+      <view class="title">把户型图变成装修方案</view>
+      <view class="subtitle">上传户型图，选择预算和风格，快速生成一份可阅读的空间规划报告。</view>
+      <button class="primary-button" bindtap="goCreate">开始生成</button>
     </view>
   </view>
 
-  <view class="section card">
-    <view class="section-title">下一步</view>
-    <view class="subtitle">接入云开发后，可以把报告保存到云端，再由云函数调用大模型生成真实装修方案。</view>
+  <view class="section quick-grid">
+    <view class="quick-card">
+      <view class="quick-number">01</view>
+      <view class="quick-title">上传户型</view>
+      <view class="quick-text">选择图片即可开始</view>
+    </view>
+    <view class="quick-card">
+      <view class="quick-number">02</view>
+      <view class="quick-title">选择偏好</view>
+      <view class="quick-text">预算、风格和需求</view>
+    </view>
+    <view class="quick-card wide">
+      <view class="quick-number">03</view>
+      <view class="quick-title">生成报告</view>
+      <view class="quick-text">包含空间建议、材料清单和预算估算</view>
+    </view>
   </view>
 </view>
-

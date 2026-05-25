@@ -1,9 +1,8 @@
 <view class="page" wx:if="{{report}}">
   <view class="report-header">
     <view class="title">{{report.project.style}}装修方案</view>
-    <view class="subtitle">{{report.project.city}} · {{report.project.area}}㎡ · {{report.project.layout}}</view>
+    <view class="subtitle">{{report.project.area}}㎡ · {{report.project.layout}}</view>
     <view class="tag">{{report.project.budget}}</view>
-    <view class="tag">{{report.project.family}}</view>
   </view>
 
   <view class="section card">
@@ -63,4 +62,3 @@
   <view class="subtitle">先创建一个装修方案，再查看报告。</view>
   <button class="primary-button" bindtap="goCreate">去创建</button>
 </view>
-

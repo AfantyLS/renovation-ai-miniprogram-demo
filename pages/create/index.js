@@ -42,14 +42,17 @@ Page({
     const values = event.detail.value
     const form = {
       ...values,
+      city: "你的家",
+      layout: "智能规划",
+      family: "居住需求待补充",
       budget: this.data.budgetOptions[this.data.budgetIndex],
       style: this.data.styleOptions[this.data.styleIndex],
       floorPlanPath: this.data.floorPlanPath
     }
 
-    if (!form.city || !form.area || !form.layout) {
+    if (!form.area) {
       wx.showToast({
-        title: "请填写城市、面积和户型",
+        title: "请填写建筑面积",
         icon: "none"
       })
       return
@@ -64,4 +67,3 @@ Page({
     })
   }
 })
-
