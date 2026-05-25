@@ -20,6 +20,8 @@
       <view class="html-title">房间渲染图</view>
       <view class="render-grid">
         <view wx:for="{{report.rooms}}" wx:key="name" class="render-card {{item.tone}}">
+          <image class="render-image" src="{{item.renderImage}}" mode="aspectFill"></image>
+          <view class="render-shade"></view>
           <view class="render-room">{{item.name}}</view>
           <view class="render-title">{{item.renderTitle}}</view>
         </view>

@@ -84,6 +84,7 @@ function buildReport(form) {
         name: "客厅",
         tone: "living",
         renderTitle: "温润通透的会客核心",
+        renderImage: "/assets/render-living.jpg",
         plan: "以舒适会客和家庭互动为核心，建议选择低饱和墙面、模块化沙发和隐藏式收纳电视柜。",
         materials: "地面建议使用耐磨木地板或柔光砖，墙面使用环保乳胶漆。"
       },
@@ -91,6 +92,7 @@ function buildReport(form) {
         name: "主卧",
         tone: "bedroom",
         renderTitle: "安静放松的睡眠空间",
+        renderImage: "/assets/render-bedroom.jpg",
         plan: "主卧强调安静和睡眠质量，床头采用暖色局部照明，衣柜做到顶减少卫生死角。",
         materials: "墙面选择低 VOC 乳胶漆，窗帘建议遮光帘加纱帘组合。"
       },
@@ -98,6 +100,7 @@ function buildReport(form) {
         name: "厨房",
         tone: "kitchen",
         renderTitle: "顺手好清洁的烹饪动线",
+        renderImage: "/assets/render-kitchen.jpg",
         plan: "厨房重点优化洗切炒动线，台面预留小家电区，吊柜下方增加灯带。",
         materials: "台面建议石英石，墙面选择易清洁瓷砖。"
       },
@@ -105,6 +108,7 @@ function buildReport(form) {
         name: "卫生间",
         tone: "bath",
         renderTitle: "干湿分离与安全防滑",
+        renderImage: "/assets/render-bath.jpg",
         plan: "优先做干湿分离，镜柜和壁龛提升收纳能力，地面注意防滑。",
         materials: "地砖选择防滑砖，五金选择耐腐蚀材质。"
       }
