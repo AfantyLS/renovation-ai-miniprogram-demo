@@ -34,7 +34,7 @@
           wx:for="{{report.rooms}}"
           wx:key="name"
           class="render-card {{item.tone}}"
-          data-src="{{item.renderImage}}"
+          data-index="{{index}}"
           bindtap="previewRender"
         >
           <image class="render-image" src="{{item.renderImage}}" mode="aspectFill"></image>
@@ -111,6 +111,22 @@
   <view class="report-actions">
     <button class="ghost-button action-button" bindtap="goHistory">历史报告</button>
     <button class="primary-button action-button" bindtap="goCreate">再生成一份</button>
+  </view>
+
+  <view wx:if="{{previewVisible}}" class="image-preview-layer" catchtouchmove="noop">
+    <view class="preview-backdrop" bindtap="closePreview"></view>
+    <view class="preview-panel">
+      <image class="preview-full-image" src="{{previewRoom.renderImage}}" mode="aspectFit"></image>
+      <view class="preview-caption">
+        <view>
+          <view class="preview-room">{{previewRoom.name}}</view>
+          <view class="preview-title">{{previewRoom.renderTitle}}</view>
+        </view>
+        <button class="preview-close" bindtap="closePreview">关闭</button>
+      </view>
+      <button class="preview-nav preview-prev" data-direction="prev" bindtap="switchPreview">‹</button>
+      <button class="preview-nav preview-next" data-direction="next" bindtap="switchPreview">›</button>
+    </view>
   </view>
 </view>
 

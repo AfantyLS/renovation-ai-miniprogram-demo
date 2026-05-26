@@ -41,7 +41,10 @@ function normalizeReport(report) {
 
 Page({
   data: {
-    report: null
+    report: null,
+    previewVisible: false,
+    previewIndex: 0,
+    previewRoom: null
   },
 
   onLoad() {
@@ -52,18 +55,39 @@ Page({
   },
 
   previewRender(event) {
-    const current = event.currentTarget.dataset.src
-    const urls = (this.data.report.rooms || [])
-      .map((room) => room.renderImage)
-      .filter(Boolean)
+    const index = Number(event.currentTarget.dataset.index)
+    const rooms = this.data.report.rooms || []
+    const room = rooms[index]
+    if (!room || !room.renderImage) return
 
-    if (!current || !urls.length) return
-
-    wx.previewImage({
-      current,
-      urls
+    this.setData({
+      previewVisible: true,
+      previewIndex: index,
+      previewRoom: room
     })
   },
+
+  closePreview() {
+    this.setData({
+      previewVisible: false,
+      previewRoom: null
+    })
+  },
+
+  switchPreview(event) {
+    const direction = event.currentTarget.dataset.direction
+    const rooms = this.data.report.rooms || []
+    if (!rooms.length) return
+
+    const delta = direction === "next" ? 1 : -1
+    const previewIndex = (this.data.previewIndex + delta + rooms.length) % rooms.length
+    this.setData({
+      previewIndex,
+      previewRoom: rooms[previewIndex]
+    })
+  },
+
+  noop() {},
 
   goCreate() {
     wx.navigateTo({
