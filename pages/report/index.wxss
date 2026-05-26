@@ -468,29 +468,6 @@
   font-weight: 800;
 }
 
-.preview-nav {
-  position: absolute;
-  top: 50%;
-  width: 76rpx;
-  height: 76rpx;
-  margin-top: -38rpx;
-  border-radius: 50%;
-  background: rgba(255, 253, 248, 0.16);
-  color: #fffdf8;
-  font-size: 56rpx;
-  line-height: 1;
-  font-weight: 300;
-  backdrop-filter: blur(12rpx);
-}
-
-.preview-prev {
-  left: 24rpx;
-}
-
-.preview-next {
-  right: 24rpx;
-}
-
 @keyframes previewIn {
   from {
     opacity: 0;

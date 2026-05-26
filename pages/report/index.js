@@ -44,7 +44,8 @@ Page({
     report: null,
     previewVisible: false,
     previewIndex: 0,
-    previewRoom: null
+    previewRoom: null,
+    previewTouchStartX: 0
   },
 
   onLoad() {
@@ -74,8 +75,7 @@ Page({
     })
   },
 
-  switchPreview(event) {
-    const direction = event.currentTarget.dataset.direction
+  updatePreview(direction) {
     const rooms = this.data.report.rooms || []
     if (!rooms.length) return
 
@@ -85,6 +85,25 @@ Page({
       previewIndex,
       previewRoom: rooms[previewIndex]
     })
+  },
+
+  onPreviewTouchStart(event) {
+    const touch = event.changedTouches && event.changedTouches[0]
+    if (!touch) return
+
+    this.setData({
+      previewTouchStartX: touch.clientX
+    })
+  },
+
+  onPreviewTouchEnd(event) {
+    const touch = event.changedTouches && event.changedTouches[0]
+    if (!touch) return
+
+    const deltaX = touch.clientX - this.data.previewTouchStartX
+    if (Math.abs(deltaX) < 48) return
+
+    this.updatePreview(deltaX < 0 ? "next" : "prev")
   },
 
   noop() {},

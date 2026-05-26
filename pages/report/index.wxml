@@ -115,7 +115,7 @@
 
   <view wx:if="{{previewVisible}}" class="image-preview-layer" catchtouchmove="noop">
     <view class="preview-backdrop" bindtap="closePreview"></view>
-    <view class="preview-panel">
+    <view class="preview-panel" bindtouchstart="onPreviewTouchStart" bindtouchend="onPreviewTouchEnd">
       <image class="preview-full-image" src="{{previewRoom.renderImage}}" mode="aspectFit"></image>
       <view class="preview-caption">
         <view>
@@ -124,8 +124,6 @@
         </view>
         <button class="preview-close" bindtap="closePreview">关闭</button>
       </view>
-      <button class="preview-nav preview-prev" data-direction="prev" bindtap="switchPreview">‹</button>
-      <button class="preview-nav preview-next" data-direction="next" bindtap="switchPreview">›</button>
     </view>
   </view>
 </view>
